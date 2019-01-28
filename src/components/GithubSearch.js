@@ -38,12 +38,8 @@ export async function fetchFromGithub(endpoint) {
 async function getReposByOrganizationOrUser(name) {
   const results = [];
   const [orgRepos, userRepos] = await Promise.all([
-    fetchFromGithub(
-      `/orgs/${name}/repos?type=all&access_token=adae62d697ef13ce0656004882c73119aee073c3`
-    ),
-    fetchFromGithub(
-      `/users/${name}/repos?type=all&access_token=adae62d697ef13ce0656004882c73119aee073c3`
-    )
+    fetchFromGithub(`/orgs/${name}/repos?type=all`),
+    fetchFromGithub(`/users/${name}/repos?type=all`)
   ]);
   // There may be duplicated repos so we'll filter those out with a map
   let repos = [...orgRepos, ...userRepos];

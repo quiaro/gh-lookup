@@ -2,9 +2,7 @@ import React, { PureComponent } from "react";
 import { PropTypes } from "prop-types";
 
 async function getRepoLanguages(url) {
-  const response = await fetch(
-    `${url}?access_token=adae62d697ef13ce0656004882c73119aee073c3`
-  );
+  const response = await fetch(url);
   const body = await response.json();
   return Object.keys(body);
 }
